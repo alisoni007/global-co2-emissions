@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Global CO2 Emissions",
+    "section": "",
+    "text": "Global CO₂ emissions vary dramatically across nations, revealing stark inequalities in climate impact. This project uses 1960–2020 CO₂ emissions data from the World Bank’s Climate Knowledge Portal, measuring annual emissions in kilotons (kt) by country. The dataset was cleaned using R’s tidyverse tools, addressing missing values and standardizing country names for accurate cross-year comparisons. Just 10 countries account for over 65% of global CO₂ emissions since 1960, highlighting an urgent need for equitable climate policies."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I’m Hassan Ali, a data professional focused on environmental analytics.\nContact me at: hassan.alisoni007@gmail.com.\nThis project investigates Global CO₂ Emissions using World Bank data to quantify national climate responsibilities.\nDeveloped for Kane’s Data Science Bootcamp, applying open-source tools to real-world sustainability challenges."
+  }
+]
