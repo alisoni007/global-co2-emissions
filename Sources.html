@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Global CO2 Emissions</title>
+<title>Data Sources – Global CO2 Emissions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -94,11 +94,11 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Sources.html"> 
+    <a class="nav-link active" href="./Sources.html" aria-current="page"> 
 <span class="menu-text">Sources</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -112,15 +112,25 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#primary-data-source" id="toc-primary-data-source" class="nav-link active" data-scroll-target="#primary-data-source">Primary Data Source</a></li>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a></li>
+  <li><a href="#supplementary-references" id="toc-supplementary-references" class="nav-link" data-scroll-target="#supplementary-references">Supplementary References</a></li>
+  <li><a href="#tools-used" id="toc-tools-used" class="nav-link" data-scroll-target="#tools-used">Tools Used</a></li>
+  <li><a href="#code-repository" id="toc-code-repository" class="nav-link" data-scroll-target="#code-repository">Code Repository</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">Data Sources</h1>
 </div>
 
 
@@ -137,12 +147,60 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>I’m <a href="https://github.com/alisoni007">Hassan Ali</a>, a data professional focused on environmental analytics.<br>
-Contact me at: <a href="mailto:hassan.alisoni007@gmail.com">hassan.alisoni007@gmail.com</a>.</p>
-<p>This project investigates <a href="https://github.com/alisoni007/global-co2-emissions">Global CO₂ Emissions</a> using World Bank data to quantify national climate responsibilities.</p>
-<p>Developed for <a href="https://bootcamp.davidkane.info/">Kane’s Data Science Bootcamp</a>, applying open-source tools to real-world sustainability challenges.</p>
+<section id="primary-data-source" class="level2">
+<h2 class="anchored" data-anchor-id="primary-data-source">Primary Data Source</h2>
+<p><strong>World Bank Climate Data</strong><br>
+- <strong>Dataset</strong>: CO₂ Emissions (kt)<br>
+- <strong>Timeframe</strong>: 1960–2020<br>
+- <strong>Indicator Code</strong>: <code>EN.ATM.CO2E.KT</code><br>
+- <strong>URL</strong>: <a href="https://climateknowledgeportal.worldbank.org">https://climateknowledgeportal.worldbank.org</a><br>
+- <strong>Download Method</strong>: Direct CSV download via World Bank API</p>
+</section>
+<section id="methodology" class="level2">
+<h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
+<ol type="1">
+<li><strong>Data Cleaning</strong>:
+<ul>
+<li>Removed metadata columns (<code>Indicator Name</code>, <code>Indicator Code</code>)</li>
+<li>Handled missing values with <code>drop_na()</code></li>
+<li>Standardized country names across years</li>
+</ul></li>
+<li><strong>Analysis</strong>:
+<ul>
+<li>Top emitters identified by 2020 values</li>
+<li>Cumulative emissions calculated using <code>sum(CO2_kt)</code></li>
+</ul></li>
+</ol>
+</section>
+<section id="supplementary-references" class="level2">
+<h2 class="anchored" data-anchor-id="supplementary-references">Supplementary References</h2>
+<ol type="1">
+<li>IPCC Guidelines for National Greenhouse Gas Inventories<br>
+</li>
+<li>Global Carbon Project (2023) - Methodology Comparisons<br>
+</li>
+<li>World Bank Data Documentation: <a href="https://datahelpdesk.worldbank.org">Data Help Desk</a></li>
+</ol>
+</section>
+<section id="tools-used" class="level2">
+<h2 class="anchored" data-anchor-id="tools-used">Tools Used</h2>
+<ul>
+<li><strong>R Packages</strong>:
+<ul>
+<li><code>tidyverse</code> (data wrangling)</li>
+<li><code>ggplot2</code> (visualization)</li>
+<li><code>scales</code> (axis formatting)</li>
+</ul></li>
+</ul>
+</section>
+<section id="code-repository" class="level2">
+<h2 class="anchored" data-anchor-id="code-repository">Code Repository</h2>
+<ul>
+<li><strong>GitHub</strong>: <a href="https://github.com/alisoni007/global-co2-emissions">github.com/alisoni007/global-co2-emissions</a></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
