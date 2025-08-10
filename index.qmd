@@ -1,0 +1,122 @@
+--- 
+title: "Global CO2 Emissions" 
+Author: "Hassan Ali" 
+format: html 
+execute:
+  echo: false   
+  warning: false     
+  message: false 
+--- 
+
+Global CO₂ emissions vary dramatically across nations, revealing stark inequalities in climate impact. This project uses 1960–2020 CO₂ emissions data from the World Bank's Climate Knowledge Portal, measuring annual emissions in kilotons (kt) by country. The dataset was cleaned using R's tidyverse tools, addressing missing values and standardizing country names for accurate cross-year comparisons. Just 10 countries account for over 65% of global CO₂ emissions since 1960, highlighting an urgent need for equitable climate policies.
+
+
+```{r}
+#|warning: false
+#|message: false
+library(tidyverse)
+library(scales)
+```
+
+
+```{r}
+#| include: false
+# Load and process data - completely hidden
+source("data.R")
+
+# Clean and transform data without displaying
+co2_clean <- co2_data %>%
+  select(-`Indicator Name`, -`Indicator Code`, -matches("^202[1-5]|^...71$")) %>%
+  pivot_longer(
+    cols = `1960`:`2020`,
+    names_to = "Year",
+    values_to = "CO2_kt",
+    values_drop_na = TRUE
+  ) %>%
+  mutate(Year = as.numeric(Year))
+```
+
+
+```{r}
+#| echo: false       # Hides the code
+#| results: 'hide'   # Hides the table output
+#| warning: false
+#| message: false
+# Prepare data for the top 10 countries in 2020
+top_10_2020 <- co2_data %>%
+  select(-`Indicator Name`, -`Indicator Code`, -matches("^202[1-5]|^...71$")) %>%  # Remove unnecessary columns
+  pivot_longer(
+    cols = matches("^19|^20"),  # Dynamically select year columns from 1960 to 2020
+    names_to = "Year",
+    values_to = "CO2_kt",
+    values_drop_na = TRUE
+  ) %>%
+  mutate(Year = as.numeric(Year)) %>%
+  filter(Year == 2020) %>%
+  arrange(desc(CO2_kt)) %>%
+  head(10) %>%
+  pull(`Country Name`)  # Extract country names for top 10 countries
+
+# Prepare data for plotting
+co2_plot_data <- co2_data %>%
+  select(-`Indicator Name`, -`Indicator Code`, -matches("^202[1-5]|^...71$")) %>%
+  pivot_longer(
+    cols = matches("^19|^20"),  # Dynamically select year columns from 1960 to 2020
+    names_to = "Year",
+    values_to = "CO2_kt",
+    values_drop_na = TRUE
+  ) %>%
+  mutate(
+    Year = as.numeric(Year),
+    Highlight = if_else(`Country Name` %in% top_10_2020, "Top 10", "Other")  # Highlight top 10 countries
+  )
+
+# Create visualization
+ggplot(co2_plot_data, aes(x = Year, y = CO2_kt/1e6, group = `Country Name`)) +
+  geom_line(
+    aes(color = Highlight, alpha = Highlight, linewidth = Highlight),
+    show.legend = FALSE
+  ) +
+  geom_smooth(
+    data = filter(co2_plot_data, Highlight == "Top 10"),
+    method = "loess", 
+    se = FALSE, 
+    color = "red",
+    linewidth = 0.5
+  ) +
+  scale_color_manual(values = c("Top 10" = "#E41A1C", "Other" = "gray70")) +
+  scale_alpha_manual(values = c("Top 10" = 1, "Other" = 0.3)) +
+  scale_linewidth_manual(values = c("Top 10" = 0.8, "Other" = 0.3)) +
+  scale_y_continuous(labels = label_number(suffix = "M kt")) +
+  facet_wrap(~Highlight, ncol = 1, scales = "free_y") +
+  labs(
+    title = "Evolution of CO2 Emissions (1960-2020)",
+    subtitle = "Top 10 emitting countries (in red) account for majority of global output",
+    y = "CO2 Emissions (Million Kilotons)",
+    caption = "Source: World Bank Climate Data | Highlighted countries based on 2020 emissions"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", size = 18),
+    plot.subtitle = element_text(color = "black", margin = margin(b = 15)),
+    panel.grid.minor = element_blank(),
+    strip.text = element_blank(),
+    plot.caption = element_text(color = "gray50", margin = margin(t = 10)),
+    axis.title.x = element_text(margin = margin(t = 10)),
+    axis.title.y = element_text(margin = margin(r = 10))
+  ) +
+  annotate(
+    "text",
+    x = 1990, y = Inf,
+    label = "China's rapid industrialization\nspurred emissions growth",
+    vjust = 1.5, hjust = 0.5,
+    color = "#E41A1C", size = 3.5
+  ) +
+  annotate(
+    "curve",
+    x = 1995, xend = 2005,
+    y = 4, yend = 6,
+    curvature = 0.2, arrow = arrow(length = unit(2, "mm")),
+    color = "#E41A1C"
+  )
+```

@@ -1,0 +1,36 @@
+---
+title: "Data Sources"
+format: html
+---
+
+## Primary Data Source
+**World Bank Climate Data**  
+- **Dataset**: CO₂ Emissions (kt)  
+- **Timeframe**: 1960–2020  
+- **Indicator Code**: `EN.ATM.CO2E.KT`  
+- **URL**: [https://climateknowledgeportal.worldbank.org](https://climateknowledgeportal.worldbank.org)  
+- **Download Method**: Direct CSV download via World Bank API  
+
+## Methodology
+1. **Data Cleaning**:
+   - Removed metadata columns (`Indicator Name`, `Indicator Code`)
+   - Handled missing values with `drop_na()`
+   - Standardized country names across years
+
+2. **Analysis**:
+   - Top emitters identified by 2020 values
+   - Cumulative emissions calculated using `sum(CO2_kt)`
+
+## Supplementary References
+1. IPCC Guidelines for National Greenhouse Gas Inventories  
+2. Global Carbon Project (2023) - Methodology Comparisons  
+3. World Bank Data Documentation: [Data Help Desk](https://datahelpdesk.worldbank.org)
+
+## Tools Used
+- **R Packages**:
+  - `tidyverse` (data wrangling)
+  - `ggplot2` (visualization)
+  - `scales` (axis formatting)
+
+## Code Repository
+- **GitHub**: [github.com/alisoni007/global-co2-emissions](https://github.com/alisoni007/global-co2-emissions)

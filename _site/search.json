@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "Sources.html",
+    "href": "Sources.html",
+    "title": "Data Sources",
+    "section": "",
+    "text": "World Bank Climate Data\n- Dataset: CO₂ Emissions (kt)\n- Timeframe: 1960–2020\n- Indicator Code: EN.ATM.CO2E.KT\n- URL: https://climateknowledgeportal.worldbank.org\n- Download Method: Direct CSV download via World Bank API"
+  },
+  {
+    "objectID": "Sources.html#primary-data-source",
+    "href": "Sources.html#primary-data-source",
+    "title": "Data Sources",
+    "section": "",
+    "text": "World Bank Climate Data\n- Dataset: CO₂ Emissions (kt)\n- Timeframe: 1960–2020\n- Indicator Code: EN.ATM.CO2E.KT\n- URL: https://climateknowledgeportal.worldbank.org\n- Download Method: Direct CSV download via World Bank API"
+  },
+  {
+    "objectID": "Sources.html#methodology",
+    "href": "Sources.html#methodology",
+    "title": "Data Sources",
+    "section": "Methodology",
+    "text": "Methodology\n\nData Cleaning:\n\nRemoved metadata columns (Indicator Name, Indicator Code)\nHandled missing values with drop_na()\nStandardized country names across years\n\nAnalysis:\n\nTop emitters identified by 2020 values\nCumulative emissions calculated using sum(CO2_kt)"
+  },
+  {
+    "objectID": "Sources.html#supplementary-references",
+    "href": "Sources.html#supplementary-references",
+    "title": "Data Sources",
+    "section": "Supplementary References",
+    "text": "Supplementary References\n\nIPCC Guidelines for National Greenhouse Gas Inventories\n\nGlobal Carbon Project (2023) - Methodology Comparisons\n\nWorld Bank Data Documentation: Data Help Desk"
+  },
+  {
+    "objectID": "Sources.html#tools-used",
+    "href": "Sources.html#tools-used",
+    "title": "Data Sources",
+    "section": "Tools Used",
+    "text": "Tools Used\n\nR Packages:\n\ntidyverse (data wrangling)\nggplot2 (visualization)\nscales (axis formatting)"
+  },
+  {
+    "objectID": "Sources.html#code-repository",
+    "href": "Sources.html#code-repository",
+    "title": "Data Sources",
+    "section": "Code Repository",
+    "text": "Code Repository\n\nGitHub: github.com/alisoni007/global-co2-emissions"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I’m Hassan Ali, a data professional focused on environmental analytics.\nContact me at: hassan.alisoni007@gmail.com.\nThis project investigates Global CO₂ Emissions using World Bank data to quantify national climate responsibilities.\nDeveloped for Kane’s Data Science Bootcamp, applying open-source tools to real-world sustainability challenges."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Global CO2 Emissions",
+    "section": "",
+    "text": "Global CO₂ emissions vary dramatically across nations, revealing stark inequalities in climate impact. This project uses 1960–2020 CO₂ emissions data from the World Bank’s Climate Knowledge Portal, measuring annual emissions in kilotons (kt) by country. The dataset was cleaned using R’s tidyverse tools, addressing missing values and standardizing country names for accurate cross-year comparisons. Just 10 countries account for over 65% of global CO₂ emissions since 1960, highlighting an urgent need for equitable climate policies."
+  }
+]

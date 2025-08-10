@@ -1,0 +1,10 @@
+---
+title: "About"
+---
+
+I'm [Hassan Ali](https://github.com/alisoni007), a data professional focused on environmental analytics.  
+Contact me at: [hassan.alisoni007@gmail.com](mailto:hassan.alisoni007@gmail.com).
+
+This project investigates [Global CO₂ Emissions](https://github.com/alisoni007/global-co2-emissions) using World Bank data to quantify national climate responsibilities.
+
+Developed for [Kane's Data Science Bootcamp](https://bootcamp.davidkane.info/), applying open-source tools to real-world sustainability challenges.
